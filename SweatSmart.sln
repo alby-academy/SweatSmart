@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SweatSmart", "SweatSmart\SweatSmart.csproj", "{7ECE2415-AEB9-4F62-AEDC-45529074DBBE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7ECE2415-AEB9-4F62-AEDC-45529074DBBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ECE2415-AEB9-4F62-AEDC-45529074DBBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ECE2415-AEB9-4F62-AEDC-45529074DBBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ECE2415-AEB9-4F62-AEDC-45529074DBBE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
