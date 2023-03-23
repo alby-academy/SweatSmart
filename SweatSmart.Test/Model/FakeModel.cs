@@ -43,7 +43,7 @@ public class OrdersFaker : Faker<Order>
             var quantity = f.Random.Int(1, 10);
             var occuredOn = f.Date.Past(5);
 
-            return new(productId, userId, quantity, occuredOn);
+            return new(userId, productId, quantity, occuredOn);
         });
     }
 }
