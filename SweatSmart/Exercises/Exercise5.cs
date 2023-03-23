@@ -3,8 +3,8 @@ namespace SweatSmart.Exercises;
 using Abstract;
 
 /// <summary>
-/// Dato un elenco di numeri, trovare la somma dei quadrati dei numeri dispari e la radice quadrata della somma dei cubi dei numeri pari.
-/// Utilizzare Where, Select, Aggregate e Math.
+///     Dato un elenco di numeri, trovare la somma dei quadrati dei numeri dispari e la radice quadrata della somma dei cubi dei numeri pari.
+///     Utilizzare Where, Select, Aggregate e Math.
 /// </summary>
 public class Exercise5 : LinqExercise
 {
@@ -14,12 +14,12 @@ public class Exercise5 : LinqExercise
 
         var resultOdds = numbers
             .Where(n => n % 2 != 0)
-            .Select(n => Math.Pow(n,2))
-            .Aggregate(0D,(acc,n) => acc + n);
+            .Select(n => Math.Pow(n, 2))
+            .Aggregate(0D, (acc, n) => acc + n);
 
         var resultEven = numbers
             .Where(n => n % 2 == 0)
-            .Select(n => Math.Pow(n,3))
+            .Select(n => Math.Pow(n, 3))
             .Aggregate(0D, (acc, n) => acc + n);
 
         Console.WriteLine($"Somma dei quadrati dei numeri dispari {resultOdds}");

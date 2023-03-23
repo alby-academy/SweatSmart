@@ -4,21 +4,21 @@ using Model;
 
 public abstract class TestBase : ITest
 {
-    protected readonly IWriter Writer;
+    protected readonly IEnumerable<Order> Orders;
     protected readonly IEnumerable<Product> Products;
     protected readonly IEnumerable<User> Users;
-    protected readonly IEnumerable<Order> Orders;
+    protected readonly IWriter Writer;
 
-    protected TestBase(IWriter writer, Func<IEnumerable<Product>> products, Func<IEnumerable<User>> users, Func<IEnumerable<Product>, IEnumerable<User>, IEnumerable<Order>> orders)
+    protected TestBase(IWriter writer, int products, int users, int orders)
     {
         Writer = writer;
-        Products = products();
-        Users = users();
-        Orders = orders(Products, Users);
+        Products = new ProductFaker().Generate(products);
+        Users = new UserFaker().Generate(users);
+        Orders = new OrdersFaker(Products, Users).Generate(orders);
     }
 
     public abstract void Run();
-    
+
     public void Write()
     {
         Writer.WriteProducts(Products);

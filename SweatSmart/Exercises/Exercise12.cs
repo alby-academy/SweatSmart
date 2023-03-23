@@ -5,7 +5,7 @@ using Abstract;
 public class Exercise12 : LinqExercise
 {
     /// <summary>
-    /// Trova l'errore nel seguente codice e spiega perché il risultato è sbagliato. => Defference Execution
+    ///     Trova l'errore nel seguente codice e spiega perché il risultato è sbagliato. => Defference Execution
     public override void Run()
     {
         var numbers = new List<int> { 1, 2, 3, 4, 5 };
@@ -15,9 +15,6 @@ public class Exercise12 : LinqExercise
         numbers.Add(6);
 
         // Iteriamo sulla query
-        foreach (var num in query)
-        {
-            Console.WriteLine(num);
-        }
+        foreach (var num in query) Console.WriteLine(num);
     }
 }

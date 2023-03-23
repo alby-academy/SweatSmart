@@ -28,9 +28,6 @@ public class Exercise7 : LinqExercise
             .SkipWhile(x => x < 3000)
             .Reverse();
 
-        foreach (var i in res)
-        {
-            Console.WriteLine(i);
-        }
+        foreach (var i in res) Console.WriteLine(i);
     }
 }

@@ -3,11 +3,11 @@ namespace SweatSmart.Exercises;
 using Abstract;
 
 /// <summary>
-/// Supponiamo di avere un elenco di prodotti, ognuno dei quali ha un prezzo e una categoria.
-/// Vogliamo creare una nuova sequenza che raggruppi i prodotti per categoria
-/// e calcoli il prezzo medio dei prodotti in ciascuna categoria.
-/// Inoltre, vogliamo ordinare i risultati in ordine decrescente di prezzo medio.
-/// Utilizzare GroupBy Select Average OrderByDescending
+///     Supponiamo di avere un elenco di prodotti, ognuno dei quali ha un prezzo e una categoria.
+///     Vogliamo creare una nuova sequenza che raggruppi i prodotti per categoria
+///     e calcoli il prezzo medio dei prodotti in ciascuna categoria.
+///     Inoltre, vogliamo ordinare i risultati in ordine decrescente di prezzo medio.
+///     Utilizzare GroupBy Select Average OrderByDescending
 /// </summary>
 public class Exercise8 : LinqExercise
 {
@@ -28,18 +28,15 @@ public class Exercise8 : LinqExercise
         var result = products
             .AsEnumerable()
             .GroupBy(
-                x => x.Category, 
-                p => p.Price, 
+                x => x.Category,
+                p => p.Price,
                 (x, p) => new
                 {
-                    Category = x, Price = p.Average(p => p) 
+                    Category = x, Price = p.Average(p => p)
                 })
             .OrderByDescending(p => p.Price);
 
-        foreach (var product in result)
-        {
-            Console.WriteLine(product);
-        }
+        foreach (var product in result) Console.WriteLine(product);
     }
 
     private class Product

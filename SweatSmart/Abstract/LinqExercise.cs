@@ -2,7 +2,7 @@ namespace SweatSmart.Abstract;
 
 public abstract class LinqExercise : IExercise
 {
-    private const string LinqMethods= @"
+    private const string LinqMethods = @"
             Ecco l'elenco di tutti i principali metodi LINQ disponibili nella libreria .NET:
             1) Aggregate: calcola un valore accumulato a partire da una sequenza
             2) All: determina se tutti gli elementi di una sequenza soddisfano una condizione
@@ -45,13 +45,13 @@ public abstract class LinqExercise : IExercise
             39) ToDictionary: crea un dizionario a partire da una sequenza di coppie chiave-valore
             40) ToList: consente di materializzare un'enumerazione una lista. Restituisce una nuova istanza di una lista che contiene gli elementi dell'enumerazione.
             41) ToArray: consente di materializzare un'enumerazione un'array. Restituisce un nuova istanza di un'array che contiene gli elementi dell'enumerazione.";
-    
+
     public void Theory()
     {
         Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++");
-        Console.WriteLine("Theory");    
-        Console.WriteLine(LinqMethods);    
-        Console.WriteLine("Theory");    
+        Console.WriteLine("Theory");
+        Console.WriteLine(LinqMethods);
+        Console.WriteLine("Theory");
         Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++");
     }
 

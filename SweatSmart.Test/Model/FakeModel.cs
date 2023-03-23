@@ -10,8 +10,8 @@ public sealed class ProductFaker : Faker<Product>
         {
             var id = f.IndexFaker;
             var name = f.Commerce.Product();
-            var price = f.Random.Decimal();
-            return new Product(id, name, price);
+            var price = f.Random.Decimal(10M);
+            return new(id, name, price);
         });
     }
 }
@@ -27,7 +27,7 @@ public sealed class UserFaker : Faker<User>
             var givenName = f.Person.FirstName;
             var familyName = f.Person.LastName;
 
-            return new User(id, email, givenName, familyName);
+            return new(id, email, givenName, familyName);
         });
     }
 }
@@ -43,7 +43,7 @@ public class OrdersFaker : Faker<Order>
             var quantity = f.Random.Int(1, 10);
             var occuredOn = f.Date.Past(5);
 
-            return new Order(productId, userId, quantity, occuredOn);
+            return new(productId, userId, quantity, occuredOn);
         });
     }
 }

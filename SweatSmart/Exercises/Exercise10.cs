@@ -17,9 +17,6 @@ public class Exercise10 : LinqExercise
             .GroupBy(n => n % 2 == 0 ? "Even" : "Odd")
             .ToDictionary(g => g.Key, g => g);
 
-        foreach (var group in result)
-        {
-            Console.WriteLine($"Numbers {group.Key}:{string.Join(", ", group.Value)}");
-        }
+        foreach (var group in result) Console.WriteLine($"Numbers {group.Key}:{string.Join(", ", group.Value)}");
     }
 }

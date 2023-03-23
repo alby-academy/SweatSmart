@@ -3,7 +3,7 @@ namespace SweatSmart.Exercises;
 using Abstract;
 
 /// <summary>
-/// Scrivi una query LINQ che restituisce il nome del frutto con la quantità massima in magazzino.
+///     Scrivi una query LINQ che restituisce il nome del frutto con la quantità massima in magazzino.
 /// </summary>
 public class Exercise13 : LinqExercise
 {

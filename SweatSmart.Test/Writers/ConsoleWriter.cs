@@ -1,7 +1,6 @@
 ﻿namespace SweatSmart.Test.Writers;
 
 using Abstract;
-
 using Model;
 
 public class ConsoleWriter : IWriter
