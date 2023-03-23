@@ -6,9 +6,13 @@ public sealed class ProductFaker : Faker<Product>
 {
     public ProductFaker()
     {
-        RuleFor(o => o.Id, f => f.IndexFaker);
-        RuleFor(o => o.Name, f => f.Commerce.Product());
-        RuleFor(o => o.Price, f => f.Random.Decimal());
+        CustomInstantiator(f =>
+        {
+            var id = f.IndexFaker;
+            var name = f.Commerce.Product();
+            var price = f.Random.Decimal();
+            return new Product(id, name, price);
+        });
     }
 }
 
@@ -16,10 +20,15 @@ public sealed class UserFaker : Faker<User>
 {
     public UserFaker()
     {
-        RuleFor(o => o.Id, f => f.IndexFaker);
-        RuleFor(o => o.Email, f => f.Internet.Email());
-        RuleFor(o => o.GivenName, f => f.Person.FirstName);
-        RuleFor(o => o.FamilyName, f => f.Person.LastName);
+        CustomInstantiator(f =>
+        {
+            var id = f.IndexFaker;
+            var email = f.Internet.Email();
+            var givenName = f.Person.FirstName;
+            var familyName = f.Person.LastName;
+
+            return new User(id, email, givenName, familyName);
+        });
     }
 }
 
@@ -27,9 +36,14 @@ public class OrdersFaker : Faker<Order>
 {
     public OrdersFaker(IEnumerable<Product> products, IEnumerable<User> users)
     {
-        RuleFor(o => o.ProductId, f => f.PickRandom(products).Id);
-        RuleFor(o => o.UserId, f => f.PickRandom(users).Id);
-        RuleFor(o => o.Quantity, f => f.Random.Int(1, 10));
-        RuleFor(o => o.OccuredOn, f => f.Date.PastOffset(5));
+        CustomInstantiator(f =>
+        {
+            var productId = f.PickRandom(products).Id;
+            var userId = f.PickRandom(users).Id;
+            var quantity = f.Random.Int(1, 10);
+            var occuredOn = f.Date.Past(5);
+
+            return new Order(productId, userId, quantity, occuredOn);
+        });
     }
 }
