@@ -1,21 +1,23 @@
 namespace SweatSmart.Exercises;
 
-using SweatSmart.Abstract;
+using Abstract;
 
 public class Exercise12 : LinqExercise
 {
     /// <summary>
     /// Trova l'errore nel seguente codice e spiega perché il risultato è sbagliato. => Defference Execution
-    /// </summary>
-    /// <exception cref="NotImplementedException"></exception>
     public override void Run()
     {
-        var numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        var numbers = new List<int> { 1, 2, 3, 4, 5 };
+        var query = numbers.Where(n => n % 2 == 0);
 
-        var evenNumbers = numbers.Where(x => x % 2 == 0);
+        // Aggiungiamo un nuovo numero alla lista
+        numbers.Add(6);
 
-        var result = evenNumbers.Select(x => x * x).Where(x => x % 2 != 0).Sum();
-
-        Console.WriteLine($"Result: {result}");
+        // Iteriamo sulla query
+        foreach (var num in query)
+        {
+            Console.WriteLine(num);
+        }
     }
 }

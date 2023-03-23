@@ -26,12 +26,54 @@ public class Exercise0 : IExercise
             new() { Name = "Paola", Age = 12 }
         };
 
+        Console.WriteLine();
+        Console.WriteLine("Person before add one person");
+        foreach (var person in people)
+        {
+            Console.WriteLine($"Name: {person.Name} Age: {person.Age}");
+        }
+
+        people.Add(new Person {Name = "Guido", Age = 18 });
+
+        Console.WriteLine();
+        Console.WriteLine("Person after add one person");
+        foreach (var person in people)
+        {
+            Console.WriteLine($"Name: {person.Name} Age: {person.Age}");
+        }
+
+        Console.WriteLine("Removing people under age 18: ");
+        foreach (var person in people)
+        {
+            if (person.Age < 18)
+            {
+                people.Remove(person);
+            }
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Person after remove people age 18");
+        foreach (var person in people)
+        {
+            Console.WriteLine($"Name: {person.Name} Age: {person.Age}");
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Add 1 on age");
+        foreach (var person in people)
+        {
+            person.Age = person.Age + 1;
+            Console.WriteLine($"Name: {person.Name} Age: {person.Age}");
+        }
     }
-    
+
     class Person
     {
         public string Name { get; set; }
         public int Age { get; set; }
-    }
 
+        public Person()
+        {
+        }
+    }
 }

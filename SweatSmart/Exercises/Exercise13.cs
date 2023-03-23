@@ -1,9 +1,9 @@
 namespace SweatSmart.Exercises;
 
-using SweatSmart.Abstract;
+using Abstract;
 
 /// <summary>
-/// scrivi una query LINQ che restituisce il nome del frutto con la quantità massima in magazzino.
+/// Scrivi una query LINQ che restituisce il nome del frutto con la quantità massima in magazzino.
 /// </summary>
 public class Exercise13 : LinqExercise
 {
@@ -16,7 +16,9 @@ public class Exercise13 : LinqExercise
             { "Banana", 5 },
             { "Pear", 20 }
         };
-        
-        throw new NotImplementedException();
+
+        var result = fruits.MaxBy(x => x.Value);
+
+        Console.WriteLine($"Fruit with more amount: {result}");
     }
 }

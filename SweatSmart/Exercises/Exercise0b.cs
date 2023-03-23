@@ -24,8 +24,42 @@ public class Exercise0b : IExercise
         };
 
         var newCity = new City { Name = "Bologna", Population = 390000 };
+        Console.WriteLine("Add a new key : value");
+        cities.Add(newCity.Name,newCity.Population);
+
+        Console.WriteLine();
+        Console.WriteLine("After adding a city");
+        foreach (var city in cities)
+        {
+            Console.WriteLine($"City {city.Key} Population: {city.Value}");
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Remove cities with less 100000 of population");
+        foreach (var city in cities)
+        {
+            if (city.Value < 100000)
+            {
+                cities.Remove(city.Key);
+            }
+        }
         
-        throw new NotImplementedException();
+        Console.WriteLine();
+        Console.WriteLine("After removing cities with less than 100000 of population");
+        foreach (var city in cities)
+        {
+            Console.WriteLine($"City {city.Key} Population: {city.Value}");
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Total population in dictionary");
+        var amountPopulation = 0;
+        foreach (var city in cities)
+        {
+            amountPopulation += city.Value;
+            Console.WriteLine($"After adding population of {city.Key}: {amountPopulation}");
+        }
+        Console.WriteLine($"Total amount population in dictionary: {amountPopulation}");
     }
     
     class City
