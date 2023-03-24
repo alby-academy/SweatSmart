@@ -1,33 +1,69 @@
 namespace SweatSmart.Exercises;
 
 using Abstract;
+using Extensions;
+using Model;
 
 /// <summary>
-///     Dati due elenchi di studenti, uno contenente i voti di matematica e l'altro i voti di scienze, trovare il nome dello studente che ha
-///     ottenuto il punteggio più alto complessivo, insieme ai relativi voti.
-///     Utilizzare Zip per accoppiare i voti dei due elenchi, Max per trovare il punteggio più alto e Where per trovare
-///     lo studente con quel punteggio.
+///     Suppose we have a list of people, where each person is represented by a class with string properties for given name, family name, email, and an integer property for age.
+///     We need to perform the following operations without using LINQ:
+///     1. Add a new person to the list.
+///     2. Add a list of 3 people to the list.
+///     3. Remove all people with an age less than 18 years old.
+///     4. Update the age of all people in the list by 1 year.
 /// </summary>
-public class Exercise1 : LinqExercise
+public class Exercise1 : IExercise<Person>
 {
-    public override void Run()
+    public IEnumerable<Person> Run()
     {
-        var studentNames = new List<string> { "Mario Rossi", "Luigi Bianchi", "Giovanni Verdi", "Marco Neri" };
-        var mathGrades = new List<int> { 8, 9, 10, 6 };
-        var scienceGrades = new List<int> { 7, 10, 9, 8 };
+        var people = GetPeople();
+        people.Print();
 
-        var result = studentNames
-            //unisco gli attributi e creo la tabella
-            .Zip(scienceGrades, mathGrades)
-            //clausa dove verifico la somma dei voti con lo studente
-            .Where(p => p.Second + p.Third == studentNames
-                //copia della tabela
-                .Zip(scienceGrades, mathGrades)
-                //prendo ogni somma massima
-                .Max(x => x.Second + x.Third))
-            //proietto il risultato 
-            .Select(p => $"{p.First} è il miglior studente con un {p.Second} in scienze e un {p.Third} in matematica! ");
+        AddPerson(people);
+        people.Print();
 
-        foreach (var i in result) Console.WriteLine(i);
+        AddPersons(people);
+        people.Print();
+
+        RemovePersonsYoungerThan(people);
+        people.Print();
+
+        return AddAgesToAllPersons(people);
+    }
+
+    private static List<Person> GetPeople() => new()
+    {
+        new("Paolo", "Ferrari", "paolo.rossi@email.it", 30),
+        new("Giuseppe", "Lamborghini", "giuseppe.verdi@email.it", 75),
+        new("Marco", "Maserati", "marco.blu@email.it", 27)
+    };
+
+    private static void AddPerson(ICollection<Person> people)
+    {
+        var person = new Person("Luigi", "Bianchi", "luigi.bianchi@email.it", 33);
+        people.Add(person);
+    }
+
+    private static void AddPersons(List<Person> people)
+    {
+        var newPeople = new List<Person>
+        {
+            new("Paolo", "Rossi", "paolo.rossi@email.it", 30),
+            new("Giuseppe", "Verdi", "giuseppe.verdi@email.it", 17),
+            new("Marco", "Neri", "marco.blu@email.it", 17)
+        };
+        people.AddRange(newPeople);
+    }
+
+    private static void RemovePersonsYoungerThan(IList<Person> people, int bound = 18)
+    {
+        for (var i = people.Count - 1; i >= 0; i--)
+            if (people[i].Age < bound)
+                people.RemoveAt(i);
+    }
+
+    private static IEnumerable<Person> AddAgesToAllPersons(IEnumerable<Person> people, int increment = 1)
+    {
+        foreach (var person in people) yield return person with { Age = person.Age + 1 };
     }
 }

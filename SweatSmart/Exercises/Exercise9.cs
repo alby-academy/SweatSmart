@@ -3,26 +3,19 @@ namespace SweatSmart.Exercises;
 using Abstract;
 
 /// <summary>
-///     Supponiamo di avere un elenco di stringhe e vogliamo trovare la prima stringa che inizia con la lettera "A",
-///     l'ultima stringa che finisce con la lettera "B", la terza stringa dell'elenco,
-///     il numero totale di stringhe e se l'elenco contiene la stringa "Ciao".
-///     Utilizzare i metodi First, Last, ElementAt, Count e Contains.
+///     Given a list of words, find all the words that contain the letter 'a' and have an even length.
+///     Sort the words in descending order of length and return a new sequence containing the length of each word and the word itself.
+///     Use Where, Contains, OrderByDescending, Select and Anonymous Types.
 /// </summary>
-public class Exercise9 : LinqExercise
+public class Exercise9 : IExercise<object>
 {
-    public override void Run()
+    public IEnumerable<object> Run()
     {
-        var words = new List<string>
-        {
-            "amore", "banana", "casa", "divertimento", "elefante", "foglio", "giornale", "immagine", "jazz", "karaoke",
-            "lago", "montagna", "nave", "orecchio", "pesce", "quadro", "rana", "sole", "tavolo", "uva",
-            "vino", "yoga", "zucchero"
-        };
+        var words = new[] { "apple", "banana", "cherry", "pear", "apricot" };
 
-        Console.WriteLine($"First string finisces with\'a\': {(words.Where(p => p.First() == 'A').Count() > 0 ? words.Where(p => p.First() == 'a').First() : "None")}");
-        Console.WriteLine($"Last string finishes with \'b\': {words.Where(p => p.Last() == 'b').Last()}");
-        Console.WriteLine($"The third element at list: {words.ElementAt(2)}");
-        Console.WriteLine($"Total number of elements: {words.Count}");
-        Console.WriteLine($"List contains \"Ciao\"? {(words.Contains("Ciao") ? "Yes!" : "No")}");
+        return words
+            .Where(word => word.Contains('a') && word.Length % 2 == 0)
+            .OrderByDescending(word => word.Length)
+            .Select(word => new { word.Length, Word = word });
     }
 }

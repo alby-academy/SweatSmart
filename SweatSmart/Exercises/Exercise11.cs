@@ -2,21 +2,21 @@ namespace SweatSmart.Exercises;
 
 using Abstract;
 
-/// Esercizio 11
-// Dati due elenchi di numeri, trovare i numeri presenti solo nella prima lista e non nella seconda.
-// Successivamente, stampare la somma di tali numeri e l'elenco dei numeri trovati. 
-// Trova l'errore nel seguente codice
-public class Exercise11 : LinqExercise
+/// <summary>
+///     Suppose we have two lists of words, A and B, and we need to find the words that are present only in A or only in B, but not in both.
+///     Additionally, we want to find the words that are present in both A and B, but only if they have an even number of letters, and return the first list concatenated with the second list.
+///     Use Except, Union, Intersect, and Concat methods.
+/// </summary>
+public class Exercise11 : IExercise<string>
 {
-    public override void Run()
+    public IEnumerable<string> Run()
     {
-        var list1 = new List<int> { 1, 2, 3, 4, 5 };
-        var list2 = new List<int> { 3, 4, 5, 6, 7 };
+        var a = new List<string> { "apple", "banana", "orange", "kiwi", "grape" };
+        var b = new List<string> { "banana", "pear", "kiwi", "grapefruit", "cherry" };
 
-        var query = list1.Except(list2);
-        var sum = query.Sum();
+        var result1 = a.Union(b).Except(b.Intersect(a));
+        var result2 = a.Intersect(b).Where(n => n.Length % 2 == 0);
 
-        Console.WriteLine($"Numbers only in the first list: {string.Join(",", query)}");
-        Console.WriteLine($"Sum of numbers: {sum}");
+        return result1.Concat(result2);
     }
 }

@@ -1,28 +1,26 @@
 namespace SweatSmart.Exercises;
 
 using Abstract;
+using Extensions;
 
 /// <summary>
-///     Dato un elenco di numeri, trovare la somma dei quadrati dei numeri dispari e la radice quadrata della somma dei cubi dei numeri pari.
-///     Utilizzare Where, Select, Aggregate e Math.
+///     Identify the error in the following code and explain why the output is not as expected?
+///     The code uses the Where method to filter even numbers from a list, but then adds a new number to the list after creating the query.
+///     Hint: Consider the concept of deferred execution.
+///     The desired result is 2 and 4.
 /// </summary>
-public class Exercise5 : LinqExercise
+public class Exercise5 : IExercise<int>
 {
-    public override void Run()
+    public IEnumerable<int> Run()
     {
-        var numbers = new[] { 1, 2, 3, 4, 5 };
+        var numbers = new List<int> { 1, 2, 3, 4, 5 };
+        var query = numbers.Where(n => n % 2 == 0);
 
-        var resultOdds = numbers
-            .Where(n => n % 2 != 0)
-            .Select(n => Math.Pow(n, 2))
-            .Aggregate(0D, (acc, n) => acc + n);
+        numbers.Add(6);
 
-        var resultEven = numbers
-            .Where(n => n % 2 == 0)
-            .Select(n => Math.Pow(n, 3))
-            .Aggregate(0D, (acc, n) => acc + n);
+        var result = query.ToList();
+        result.Print();
 
-        Console.WriteLine($"Somma dei quadrati dei numeri dispari {resultOdds}");
-        Console.WriteLine($"Somma dei cubi dei numeri pari= {resultEven}. La radice quadrata della somma dei cubi dei numeri pari: {Math.Sqrt(resultEven)}");
+        return result;
     }
 }

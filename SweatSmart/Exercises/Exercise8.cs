@@ -1,48 +1,39 @@
 namespace SweatSmart.Exercises;
 
 using Abstract;
+using Model;
 
 /// <summary>
-///     Supponiamo di avere un elenco di prodotti, ognuno dei quali ha un prezzo e una categoria.
-///     Vogliamo creare una nuova sequenza che raggruppi i prodotti per categoria
-///     e calcoli il prezzo medio dei prodotti in ciascuna categoria.
-///     Inoltre, vogliamo ordinare i risultati in ordine decrescente di prezzo medio.
-///     Utilizzare GroupBy Select Average OrderByDescending
+///     Given two lists of products, find all the products that are present in both sequences whose sum of prices is over 100€.
+///     Return a new sequence containing the name and price of each product.
+///     Use Where, Join to combine the sequences and select the necessary fields.
 /// </summary>
-public class Exercise8 : LinqExercise
+public class Exercise8 : IExercise<Product>
 {
-    public override void Run()
+    public IEnumerable<Product> Run()
     {
-        var products = new List<Product>
+        var products1 = new Product[]
         {
-            new() { Name = "Prodotto 1", Category = "Categoria 1", Price = 10 },
-            new() { Name = "Prodotto 2", Category = "Categoria 2", Price = 15 },
-            new() { Name = "Prodotto 3", Category = "Categoria 1", Price = 20 },
-            new() { Name = "Prodotto 4", Category = "Categoria 3", Price = 5 },
-            new() { Name = "Prodotto 5", Category = "Categoria 2", Price = 25 },
-            new() { Name = "Prodotto 6", Category = "Categoria 3", Price = 30 },
-            new() { Name = "Prodotto 7", Category = "Categoria 1", Price = 15 },
-            new() { Name = "Prodotto 8", Category = "Categoria 2", Price = 20 },
-            new() { Name = "Prodotto 9", Category = "Categoria 3", Price = 10 }
+            new("Product A", 50),
+            new("Product B", 100),
+            new("Product C", 150),
+            new("Product F", 10)
         };
-        var result = products
-            .AsEnumerable()
-            .GroupBy(
-                x => x.Category,
-                p => p.Price,
-                (x, p) => new
-                {
-                    Category = x, Price = p.Average(p => p)
-                })
-            .OrderByDescending(p => p.Price);
 
-        foreach (var product in result) Console.WriteLine(product);
-    }
+        var products2 = new Product[]
+        {
+            new("Product A", 75),
+            new("Product D", 125),
+            new("Product E", 200),
+            new("Product F", 95)
+        };
 
-    private class Product
-    {
-        public string Name { get; set; }
-        public string Category { get; set; }
-        public decimal Price { get; set; }
+        return products1
+            .Join(
+                products2,
+                nameProd1 => nameProd1.Name,
+                nameProd2 => nameProd2.Name,
+                (nameProd1, nameProd2) => new Product(nameProd2.Name, nameProd1.Price + nameProd2.Price))
+            .Where(price => price.Price >= 100);
     }
 }

@@ -2,21 +2,27 @@ namespace SweatSmart.Exercises;
 
 using Abstract;
 
-// Esercizio 10
-// Supponi di avere una lista di numeri. Crea un programma che utilizzi il metodo GroupBy per raggruppare i numeri
-// in base al loro valore pari o dispari e creare un dizionario contenente due gruppi di numeri:
-// uno per i numeri pari e uno per i numeri dispari. Utilizza il metodo ToDictionary per creare il dizionario.
-// Infine, stampa i numeri di ciascun gruppo sulla console, utilizzando un ciclo foreach.
-public class Exercise10 : LinqExercise
+/// <summary>
+///     Given a list of numbers, find the sum of the squares of the odd numbers and the sum of the cubes of the even numbers.
+///     Return a list of two elements: the first containing the result for the odd numbers and the second containing the result for the even numbers.
+///     Use Where, Select, Aggregate, and Math.
+/// </summary>
+public class Exercise10 : IExercise<double>
 {
-    public override void Run()
+    public IEnumerable<double> Run()
     {
-        var numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        var numbers = new[] { 1, 2, 3, 4, 5 };
 
-        var result = numbers
-            .GroupBy(n => n % 2 == 0 ? "Even" : "Odd")
-            .ToDictionary(g => g.Key, g => g);
+        var odds = numbers
+            .Where(n => n % 2 != 0)
+            .Select(n => Math.Pow(n, 2))
+            .Aggregate(0D, (acc, n) => acc + n);
 
-        foreach (var group in result) Console.WriteLine($"Numbers {group.Key}:{string.Join(", ", group.Value)}");
+        var even = numbers
+            .Where(n => n % 2 == 0)
+            .Select(n => Math.Pow(n, 3))
+            .Aggregate(0D, (acc, n) => acc + n);
+
+        return new[] { odds, even };
     }
 }

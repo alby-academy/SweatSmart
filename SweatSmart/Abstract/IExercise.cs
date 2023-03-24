@@ -1,7 +1,11 @@
 namespace SweatSmart.Abstract;
 
-public interface IExercise
+public interface IExercise<out T>
 {
-    public void Theory();
-    public void Run();
+    IEnumerable<T> Run();
+}
+
+public interface IExercise<TKey, TValue>
+{
+    Dictionary<TKey, TValue> Run();
 }

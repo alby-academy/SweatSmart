@@ -1,14 +1,13 @@
-﻿using SweatSmart.Test.Tests;
-using SweatSmart.Test.Writers;
+﻿using SweatSmart.Exercises;
+using SweatSmart.Extensions;
 
-var writer = new ConsoleWriter();
-var exercise = new Test1(writer);
+var exercise = new Exercise1();
 
+var type = exercise.GetType().Name;
+Console.WriteLine("Start Exercise: {0}", type);
 
-Console.WriteLine("Start Exercise: {0}", nameof(exercise));
+var result = exercise.Run();
+result.Print();
 
-exercise.Run();
-exercise.Write();
-
-Console.WriteLine("End Exercise: {0}", nameof(exercise));
+Console.WriteLine("End Exercise: {0}", type);
 Console.ReadKey();
