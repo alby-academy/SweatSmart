@@ -103,7 +103,7 @@ public class Exercise2 : IExercise<string, ICollection<City>>
 
         foreach (var country in states)
         {
-            var citiesToRemove = CitiesToRemove(country);
+            var citiesToRemove = CitiesToRemove(country).ToList();
 
             foreach (var city in citiesToRemove) country.Value.Remove(city);
         }

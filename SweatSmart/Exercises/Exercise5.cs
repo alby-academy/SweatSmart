@@ -1,7 +1,6 @@
 namespace SweatSmart.Exercises;
 
 using Abstract;
-using Extensions;
 
 /// <summary>
 ///     Identify the error in the following code and explain why the output is not as expected?
@@ -19,7 +18,6 @@ public class Exercise5 : IExercise<int>
         numbers.Add(6);
 
         var result = query.ToList();
-        result.Print();
 
         return result;
     }

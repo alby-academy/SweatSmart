@@ -5,8 +5,9 @@ using Abstract;
 /// <summary>
 ///     Given a list of students, and two lists containing their math and science grades, find the name of the student who achieved the highest overall score, along with their grades.
 ///     Use Zip to combine the two grade lists, MaxBy to find the student with the highest total score and Anonymous Types.
+///     Return a list containing only the best student.
 /// </summary>
-public class Exercise6 : IExercise<object>
+public class Exercise06 : IExercise<object>
 {
     public IEnumerable<object> Run()
     {
@@ -26,6 +27,6 @@ public class Exercise6 : IExercise<object>
         else
             Console.WriteLine("The best student is {0}, with math grade: {1} and science grade: {2}", best.Name, best.Math, best.Science);
 
-        return result;
+        return new[] { best };
     }
 }

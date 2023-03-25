@@ -3,29 +3,49 @@ namespace SweatSmart.Exercises;
 using Abstract;
 
 /// <summary>
-///     Suppose we have a list of 1000 random integers between 1 and 10000.
-///     We want to create a new sequence that satisfies the following conditions:
-///     1) Contains the first 5 numbers of the original sequence.
-///     2) Contains all the numbers in the original sequence that are greater than 5000, up to and including the first number that is less than or equal to 5000.
-///     3) Skips the first 200 numbers of the original sequence.
-///     4) Skips all the numbers in the original sequence that are less than 3000.
-///     5) Inverts the resulting sequence.
-///     Use Take, Range, Select, Concat, Skip, SkipWhile, and Reverse methods.
+///     Given a collection of numbers, create a new sequence that satisfies the following conditions:
+///     1) It contains all numbers from the original sequence that are less than 5000,
+///     2) Ihe first 5 numbers of the original sequence,
+///     3) Skips the first 20 numbers of the resulting sequence.
+///     4) Skips all numbers in the original sequence that are greater than 100,
+///     5) Reverses the resulting sequence,
+///     6) Returns a distinct result.
+///     The method uses the Take, Range, Select, Concat, Skip, SkipWhile, TakeWhile, Distinct, and Reverse methods
 /// </summary>
 public class Exercise12 : IExercise<int>
 {
+    #region Numbers
+
+    private int[] Numbers { get; } =
+    {
+        3951, 3797, 4725, 3577, 3986, 2835, 3360, 1828, 386, 2277, 461, 4751, 2326, 203, 502, 4658, 915, 841, 306, 272, 1886, 1886, 1665, 4991, 4059, 4958, 1959,
+        1936, 467, 11, 399, 296, 564, 2081, 3495, 4129, 1015, 1891, 4046, 2871, 2147, 1039, 200, 4167, 142, 1664, 893, 1539, 1050, 2594, 903, 4765, 1302,
+        168, 3203, 383, 1454, 1697, 2212, 2501, 2173, 4530, 4648, 4428, 3022, 1945, 3708, 1091, 4722, 2199, 2733, 4216, 3472, 1606, 298, 4527, 773, 2681,
+        1485, 1605, 4288, 2250, 1026, 2246, 301, 4450, 2532, 2888, 1797, 1791, 742, 2225, 526, 4122, 323, 3964, 4834, 3887, 3013, 2099, 3652, 3098, 3678,
+        1291, 2643, 4818, 3967, 1607, 204, 2300, 388, 4937, 1536, 2457, 4927, 1503, 918, 1269, 3766, 3901, 3804, 4340, 4444, 2254, 2018, 4951, 2610, 386,
+        2043, 1825, 489, 945, 594, 1358, 4274, 1353, 2737, 3007, 1048, 1096, 1032, 2807, 122, 518, 053, 674, 27, 2787, 134, 3595, 2130, 1033, 715, 2923,
+        4873, 682, 4970, 2024, 2024, 3295, 697, 2172, 3469, 2353, 1393, 3412, 3877, 4369, 3877, 3953, 4283, 4145, 518, 1377, 1513, 1289, 4604, 2732, 1095,
+        3164, 3804, 768, 2681, 1551, 326, 625, 1695, 778, 4636, 4023, 2424, 2002, 1470, 323, 4207, 410, 4770, 3724, 3724, 4571, 474, 474, 1169, 909, 661,
+        3512, 3352, 4507, 3780, 8294, 3576, 2390, 2762, 3967, 232, 4723, 8893, 1386, 3983, 3537, 112, 1440, 1066, 2390, 4753, 2374, 3574, 846, 2319, 3893,
+        3019, 81, 4299, 518, 3953, 666, 1505, 740, 1218, 2676, 970, 3834, 890, 214, 888, 736, 704, 3822, 3844, 3818, 210, 1743, 3584, 3631, 4533, 4978, 259,
+        3898, 3905, 795, 519, 80, 1264, 2479, 2861, 1566, 959, 1076, 7436, 296, 4043, 2589, 3048, 3353, 1049, 4666, 2474, 927, 4536, 2830, 4655, 4366, 1531,
+        3127, 4140, 2728, 2219, 3735, 924, 3575, 1316, 28, 6804, 1989, 4018, 3144, 1680, 1654, 4532, 2088, 4325, 2970, 4088, 3371, 4426, 582, 385, 4234, 2879,
+        4592, 1113, 467, 2259, 2459, 2916, 2005, 2981, 3334, 4211, 1635, 3365, 423, 2346, 3063, 471, 864, 457, 6664, 7837, 6141, 3248, 6034, 4857, 8043, 9373,
+        2096, 9072, 7883, 9480, 200, 8616, 9965, 4, 1877, 4406
+    };
+
+    #endregion
+
     public IEnumerable<int> Run()
     {
-        var rnd = new Random();
-        var numbers = Enumerable
-            .Range(1, 10000)
-            .Select(item => rnd.Next(1, 10001)).ToList();
+        var first = Numbers.TakeWhile(x => x < 5000);
+        var second = Numbers.Take(5);
 
-        return numbers
-            .Take(5)
-            .Concat(numbers.TakeWhile(x => x > 5000))
-            .Skip(200)
-            .SkipWhile(x => x < 3000)
-            .Reverse();
+        return first
+            .Concat(second)
+            .Skip(20)
+            .TakeWhile(x => x > 100)
+            .Reverse()
+            .Distinct();
     }
 }

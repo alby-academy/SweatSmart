@@ -1,7 +1,6 @@
 namespace SweatSmart.Exercises;
 
 using Abstract;
-using Extensions;
 
 /// <summary>
 ///     In this exercise, the code provided utilizes the Min, Max, and Sum LINQ methods to find the minimum number, maximum number, and sum of a range of integers.
@@ -22,7 +21,6 @@ public class Exercise3 : IExercise<int>
         Console.WriteLine("Sum of numbers: {0}", sum);
 
         var result = new List<int> { min, max, sum };
-        result.Print();
 
         return result;
     }

@@ -18,8 +18,8 @@ public class Exercise14 : IExercise<string>
         var words = new List<string>
         {
             "love", "house", "entertainment", "elephant", "sheet", "newspaper", "image", "jazz", "karaoke",
-            "lake", "mountain", "ship", "ear", "fish", "painting", "frog", "sun", "table", "grape",
-            "wine", "yoga", "sugar"
+            "lake", "mountain", "ship", "apple", "ear", "fish", "painting", "frog", "sun", "table", "grape",
+            "apricot", "wine", "yoga", "sugar"
         };
 
         yield return words.FirstOrDefault(s => s.StartsWith("a")) ?? "None";

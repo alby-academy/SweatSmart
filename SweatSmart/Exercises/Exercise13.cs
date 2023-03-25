@@ -15,15 +15,15 @@ public class Exercise13 : IExercise<object>
     {
         var products = new Product[]
         {
-            new("Product1", 10, "Category1"),
-            new("Product2", 15, "Category2"),
-            new("Product3", 20, "Category1"),
-            new("Product4", 50, "Category3"),
-            new("Product5", 25, "Category2"),
-            new("Product6", 30, "Category3"),
-            new("Product7", 15, "Category1"),
-            new("Product8", 20, "Category2"),
-            new("Product9", 10, "Category3")
+            new("Product1", 10m, "Category1"),
+            new("Product2", 15m, "Category2"),
+            new("Product3", 20m, "Category1"),
+            new("Product4", 50m, "Category3"),
+            new("Product5", 25m, "Category2"),
+            new("Product6", 30m, "Category3"),
+            new("Product7", 15m, "Category1"),
+            new("Product8", 20m, "Category2"),
+            new("Product9", 10m, "Category3")
         };
 
         return products
