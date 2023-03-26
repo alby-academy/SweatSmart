@@ -18,16 +18,16 @@ public class Exercise2 : IExercise<string, ICollection<City>>
     public Dictionary<string, ICollection<City>> Run()
     {
         var states = GetStates();
-        states.Print();
+        states.Print("States");
 
         AddItalianCity(states);
-        states.Print();
+        states.Print("Add Italian cities");
 
         AddSpainCities(states);
-        states.Print();
+        states.Print("Add Spain state");
 
         RemoveCitiesLessThan1Million(states);
-        states.Print();
+        states.Print("Remove Cities Less Than 1M Population");
 
         Console.WriteLine("Italian Population: {0}", CalculateStatePopulation(states, "italy"));
         Console.WriteLine("World Population: {0}", CalculateWorldPopulation(states));

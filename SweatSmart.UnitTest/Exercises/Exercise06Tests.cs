@@ -8,7 +8,7 @@ public class Exercise06Tests
     [TestMethod]
     public void Correct()
     {
-        var sut = new Exercise06();
+        var sut = new Exercise6();
         var result = sut.Run().SingleOrDefault();
         var actual = new
         {

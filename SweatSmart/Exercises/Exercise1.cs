@@ -17,16 +17,16 @@ public class Exercise1 : IExercise<Person>
     public IEnumerable<Person> Run()
     {
         var people = GetPeople();
-        people.Print();
+        people.Print("Peoples");
 
         AddPerson(people);
-        people.Print();
+        people.Print("Peoples + 1 Person");
 
         AddPersons(people);
-        people.Print();
+        people.Print("Peoples + 3 Persons");
 
         RemovePersonsYoungerThan(people);
-        people.Print();
+        people.Print("Remove Younger Peoples");
 
         return AddAgesToAllPersons(people);
     }

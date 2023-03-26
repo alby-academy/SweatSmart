@@ -7,7 +7,7 @@ using Abstract;
 ///     Use Zip to combine the two grade lists, MaxBy to find the student with the highest total score and Anonymous Types.
 ///     Return a list containing only the best student.
 /// </summary>
-public class Exercise06 : IExercise<object>
+public class Exercise6 : IExercise<object>
 {
     public IEnumerable<object> Run()
     {

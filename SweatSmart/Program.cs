@@ -1,13 +1,14 @@
-﻿using SweatSmart.Exercises;
+﻿using SweatSmart;
 using SweatSmart.Extensions;
 
-var exercise = new Exercise1();
+var exercises = Bootstrapper.GetExercises();
 
-var type = exercise.GetType().Name;
-Console.WriteLine("Start Exercise: {0}", type);
+foreach (var (exercise, name) in exercises)
+{
+    name.PrintSeparator();
 
-var result = exercise.Run();
-result.Print();
+    var result = exercise();
+    result.Print();
+}
 
-Console.WriteLine("End Exercise: {0}", type);
 Console.ReadKey();
