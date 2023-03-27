@@ -3,14 +3,14 @@
 using Abstract;
 
 /// <summary>
-///     /// Scrivere una query che dato un prodotto mi restituisca:
-///     1) Id Nome e Prezzo del Prodotto
-///     2) Id degli utenti che hanno acquistato quel prodotto separati da ","
-///     3) Il numero totale di quante volte il prodotto e' stato venduto
-///     Se un prodotto non ha ordini esso deve essere visualizzato come segue:
-///     1) Id Nome e Prezzo del Prodotto
-///     2) stringa vuota
-///     3) 0
+///     Write a query that given a product returns:
+///         1) Id, Name, and Price of the product
+///         2) Ids of the users who have purchased that product separated by ","
+///         3) The total number of times the product has been sold
+///     If a product has no orders, it should be displayed as follows:
+///         1) Id, Name, and Price of the product
+///         2) an empty string
+///         3) 0
 /// </summary>
 public class Test2 : TestBase
 {

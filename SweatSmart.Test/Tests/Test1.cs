@@ -3,16 +3,16 @@
 using Abstract;
 
 /// <summary>
-///     Scrivere una query che dato lo User mi scriva un file excel contenente:
-///     1) Id, Nome, Congnome e Email dell'Utente
-///     2) Id dell'Ordine
-///     3) Id dei prodotti separati da "," contenuti nell'Ordine
-///     4) Il costo totale dell'ordine
-///     Se un utente non ha ordini esso deve essere visualizzato come segue:
-///     1) Id, Nome, Congnome e Email dell'Utente
-///     2) Id Ordine = 0
-///     3) string vuota
-///     4) Il costo deve essere pari a 0
+///     Write a query that, given a User, writes an Excel file containing:
+///         1) User's Id, First Name, Last Name, and Email
+///         2) Order Id
+///         3) Comma-separated Product Ids in the Order
+///         4) Total cost of the Order
+///     If a User has no orders, the output should be as follows:
+///         1) User's Id, First Name, Last Name, and Email
+///         2) Order Id = 0
+///         3) empty string
+///         4) Cost should be 0
 /// </summary>
 public class Test1 : TestBase
 {
